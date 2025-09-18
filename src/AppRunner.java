@@ -56,12 +56,9 @@ public class AppRunner {
             }
 
             switch ((input)) {
-                case "1":
-                    return new CoinAcceptor(100);
-                case "2":
-                    return new MoneyAcceptor(300);
-                default:
-                    print("Некорректный выбор. Выберите цифру из списка.");
+                case "1": return new CoinAcceptor(100);
+                case "2": return new MoneyAcceptor(300);
+                default: print("Некорректный выбор. Выберите цифру из списка.");
             }
         }
     }
@@ -88,7 +85,6 @@ public class AppRunner {
         }
 
         String action = input.substring(0, 1);
-
         if ("h".equalsIgnoreCase(action)) {
             isExit = true;
             return;
