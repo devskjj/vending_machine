@@ -57,7 +57,15 @@ public class AppRunner {
     private void chooseAction(UniversalArray<Product> products) {
         showActions(products);
         print(" h - Выйти");
-        String action = fromConsole().substring(0, 1);
+
+        String input = fromConsole().strip();
+        if (input.isEmpty()) {
+            print("Вы ничего не ввели. Попробуйте снова.");
+            chooseAction(products);
+            return;
+        }
+
+        String action = input.substring(0, 1);
         try {
             for (int i = 0; i < products.size(); i++) {
                 if (products.get(i).getActionLetter().equals(ActionLetter.valueOf(action.toUpperCase()))) {
@@ -70,11 +78,9 @@ public class AppRunner {
                 }
             }
         } catch (IllegalArgumentException e) {
-            print("Недопустимая буква. Попрбуйте еще раз.");
+            print("Недопустимая буква. Попробуйте еще раз.");
             chooseAction(products);
         }
-
-
     }
 
     private void showActions(UniversalArray<Product> products) {
