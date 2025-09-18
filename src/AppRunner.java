@@ -9,7 +9,7 @@ public class AppRunner {
 
     private final UniversalArray<Product> products = new UniversalArrayImpl<>();
 
-    private  PaymentMethod payment;
+    private PaymentMethod payment;
 
     private static boolean isExit = false;
 
@@ -47,20 +47,19 @@ public class AppRunner {
     private PaymentMethod choosePayment() {
         while (true) {
             print("Выберите способы оплаты:");
-            print("1. Монетоприемником\n" +
-                    "2. Картой");
+            print(String.format("1. %s\n" +
+                    "2. %s", CoinAcceptor.class.getSimpleName(), MoneyAcceptor.class.getSimpleName()));
             String input = fromConsole().strip();
             if (input.isEmpty()) {
                 print("Вы ничего не ввели. Попробуйте снова.");
                 continue;
             }
 
-            print(input);
             switch ((input)) {
                 case "1":
                     return new CoinAcceptor(100);
                 case "2":
-                    return new CardAcceptor(300);
+                    return new MoneyAcceptor(300);
                 default:
                     print("Некорректный выбор. Выберите цифру из списка.");
             }
