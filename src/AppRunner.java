@@ -9,7 +9,7 @@ public class AppRunner {
 
     private final UniversalArray<Product> products = new UniversalArrayImpl<>();
 
-    private final PaymentMethod payment;
+    private  PaymentMethod payment;
 
     private static boolean isExit = false;
 
@@ -22,11 +22,11 @@ public class AppRunner {
                 new Mars(ActionLetter.F, 80),
                 new Pistachios(ActionLetter.G, 130)
         });
-        payment = new CoinAcceptor(100);
     }
 
     public static void run() {
         AppRunner app = new AppRunner();
+        app.payment = app.choosePayment();
         while (!isExit) {
             app.startSimulation();
         }
@@ -42,6 +42,29 @@ public class AppRunner {
         allowProducts.addAll(getAllowedProducts().toArray());
         chooseAction(allowProducts);
 
+    }
+
+    private PaymentMethod choosePayment() {
+        while (true) {
+            print("Выберите способы оплаты:");
+            print("1. Монетоприемником\n" +
+                    "2. Картой");
+            String input = fromConsole().strip();
+            if (input.isEmpty()) {
+                print("Вы ничего не ввели. Попробуйте снова.");
+                continue;
+            }
+
+            print(input);
+            switch ((input)) {
+                case "1":
+                    return new CoinAcceptor(100);
+                case "2":
+                    return new CardAcceptor(300);
+                default:
+                    print("Некорректный выбор. Выберите цифру из списка.");
+            }
+        }
     }
 
     private UniversalArray<Product> getAllowedProducts() {
