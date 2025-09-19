@@ -1,9 +1,9 @@
 package model;
 
-public class CoinAcceptor extends PaymentMethod {
+public class MoneyAcceptor extends PaymentMethod {
     private int amount;
 
-    public CoinAcceptor(int amount) {
+    public MoneyAcceptor(int amount) {
         this.amount = amount;
     }
 

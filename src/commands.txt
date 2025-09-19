@@ -1,0 +1,15 @@
+1) git clone https://github.com/devskjj/vending_machine.git
+2) git status
+3) git checkout home_work_25
+4) git add src/
+5) git commit (fixes)
+6) git add PaymentMethod
+7) git commit Abstract Class + inheritors
+8) git commit Getters and Setters
+9) git commit edit method
+10) git status
+11) git commit some refactoring
+12) git add commands.txt
+13) git commit
+14) git merge home_work_25
+15) git push origin master

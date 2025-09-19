@@ -1,11 +1,7 @@
 package model;
 
-public class CoinAcceptor extends PaymentMethod {
+public abstract class PaymentMethod {
     private int amount;
-
-    public CoinAcceptor(int amount) {
-        this.amount = amount;
-    }
 
     public int getAmount() {
         return amount;
